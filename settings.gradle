@@ -1,1 +1,1 @@
-include ':test2', ':gradledemo', ':bitmapdemo', ':surfacedemo'
+include ':test2', ':gradledemo', ':bitmapdemo', ':surfacedemo', ':shader'
