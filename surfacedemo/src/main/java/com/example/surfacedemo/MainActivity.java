@@ -1,16 +1,22 @@
 package com.example.surfacedemo;
 
 import android.app.LoaderManager;
+import android.content.ComponentName;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.ServiceConnection;
 import android.database.Cursor;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.Button;
 
 import java.io.IOException;
 
@@ -19,7 +25,9 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements SurfaceHolder.Callback,
     LoaderManager.LoaderCallbacks<Cursor> {
-    private  final String TAG = getClass().getSimpleName();
+    private final String TAG = getClass().getSimpleName();
+    @Bind(R.id.btn_go_Media)
+    Button mBtnGoMedia;
     private Camera mCamera;
 
     @Bind(R.id.sv)
@@ -31,12 +39,32 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        SurfaceHolder holder = mSv.getHolder();
-        holder.addCallback(this);
+//        SurfaceHolder holder = mSv.getHolder();
+//        holder.addCallback(this);
 //        CursorLoader loader = new CursorLoader(this, MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null, null);
 //        Cursor cursor = loader.loadInBackground();
-        getLoaderManager().initLoader(1, null, this);
+//        getLoaderManager().initLoader(1, null, this);
+
+        ServiceConnection serviceConnection = new ServiceConnection() {
+
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+
+            }
+        };
+        mBtnGoMedia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MediaActivity.class));
+            }
+        });
     }
+
 
 
     @Override

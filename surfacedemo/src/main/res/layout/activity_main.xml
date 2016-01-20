@@ -6,12 +6,23 @@
     android:layout_height="match_parent"
     tools:context="com.example.surfacedemo.MainActivity">
 
+
+
     <SurfaceView
         android:id="@+id/sv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:inputType="numberDecimal"
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:inputType="numberDecimal"
+    />
+
+    <Button
+        android:id="@+id/btn_go_Media"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="goMediaActivity"
+        android:textAllCaps="false"
     />
 </RelativeLayout>
